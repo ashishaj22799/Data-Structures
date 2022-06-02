@@ -1,0 +1,50 @@
+class Intersect
+{
+    int countNodes(Node node){
+        Node temp = node;
+        int count = 0;
+        while(temp != null){
+            count ++;
+            temp = temp.next;
+        }
+        return count;
+    }
+    //Function to find intersection point in Y shaped Linked Lists.
+	int intersectPoint(Node head1, Node head2)
+	{
+	     if(head1 == null || head2 == null){
+	         return -1;
+	     }
+         Node temp1 = head1;
+         Node temp2 = head2;
+         
+         int countTemp1  = countNodes(temp1);
+         int countTemp2 = countNodes(temp2);
+         int diff = Math.abs(countTemp1 - countTemp2);
+         if(countTemp1 > countTemp2 ){
+             while(diff > 0){
+                 temp1 = temp1.next;
+                 diff --;
+             }
+         }
+         else{
+             while(diff > 0){
+                 temp2 = temp2.next;
+                 diff --;
+             }
+         }
+	
+	    while(temp1 != null && temp2 != null){
+	        
+	        
+	        if(temp1 == temp2){
+	            return temp1.data;
+	        }
+	        temp1 = temp1.next;
+	        temp2 = temp2.next;
+	    }
+	
+	    return -1;
+	}
+	
+}
